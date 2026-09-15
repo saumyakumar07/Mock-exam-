@@ -10,6 +10,7 @@ import StatCard from "@/components/result/StatCard";
 import SummaryDonut from "@/components/result/SummaryDonut";
 import SubjectBarChart from "@/components/result/SubjectBarChart";
 import TimeBarChart from "@/components/result/TimeBarChart";
+import QuestionDataTable from "@/components/exam/QuestionDataTable";
 
 export default function ResultPage() {
   const router = useRouter();
@@ -273,6 +274,7 @@ export default function ResultPage() {
                     </span>
                   </div>
                   <p className="text-sm text-slate-800 font-medium mb-3 whitespace-pre-line">{q.text}</p>
+                  {q.table && <QuestionDataTable table={q.table} />}
                   <div className="space-y-1.5">
                     {q.options.map((opt, i) => {
                       const isCorrectOpt = i === q.correctAnswerIndex;

@@ -8,6 +8,7 @@ import { questionStatus, formatClock } from "@/lib/examEngine";
 import { ExamSession, ExamResult, QuestionStatus } from "@/types/exam";
 import QuestionPalette from "@/components/exam/QuestionPalette";
 import SubmitModal from "@/components/exam/SubmitModal";
+import QuestionDataTable from "@/components/exam/QuestionDataTable";
 
 export default function ExamPage() {
   const router = useRouter();
@@ -269,9 +270,11 @@ export default function ExamPage() {
               )}
             </div>
 
-            <p className="text-base sm:text-lg text-slate-900 font-medium mb-6 leading-relaxed whitespace-pre-line">
+            <p className="text-base sm:text-lg text-slate-900 font-medium mb-4 leading-relaxed whitespace-pre-line">
               <span className="text-slate-500">Q{session.currentIndex + 1}.</span> {q.text}
             </p>
+
+            {q.table && <QuestionDataTable table={q.table} />}
 
             <div className="space-y-3">
               {q.options.map((opt, i) => {

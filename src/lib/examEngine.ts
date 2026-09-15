@@ -4,6 +4,7 @@ import {
   ExamResult,
   Question,
   QuestionStatus,
+  QuestionTable,
 } from "@/types/exam";
 
 export function createSession(examId: string, durationSeconds: number): ExamSession {
@@ -52,6 +53,7 @@ export interface QuestionAnalysis {
   topic: string;
   difficulty: string;
   text: string;
+  table?: QuestionTable;
   options: string[];
   correctAnswerIndex: number;
   userAnswerIndex: number | null;
@@ -98,6 +100,7 @@ export function computeAnalytics(exam: ExamSet, result: ExamResult): ResultAnaly
       topic: q.topic,
       difficulty: q.difficulty,
       text: q.text,
+      table: q.table,
       options: q.options,
       correctAnswerIndex: q.correctAnswerIndex,
       userAnswerIndex,

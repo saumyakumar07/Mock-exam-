@@ -1,4 +1,4 @@
-import { ExamSet } from "@/types/exam";
+import { ExamSet, QuestionTable } from "@/types/exam";
 
 /**
  * SBI Clerk Prelims Practice Set — 100 questions transcribed from
@@ -16,6 +16,30 @@ const SLEEP_PASSAGE =
 const BEEKEEPING_PASSAGE =
   "Over the past decade, beekeeping has moved from rural farms into the heart of many cities, with rooftops, balconies, and community gardens now hosting hives. Advocates argue that urban beekeeping helps counter the decline in bee populations caused by habitat loss and pesticide use in the countryside, since cities often offer a wider variety of flowering plants across parks, gardens, and street trees. However, some ecologists have raised concerns that the growing popularity of urban beekeeping may inadvertently harm wild pollinator species, such as native bees and butterflies, by increasing competition for limited nectar and pollen in dense urban areas. Studies conducted in several major cities found that areas with a high concentration of managed honeybee hives showed a measurable drop in the diversity of wild pollinator sightings nearby. As a result, some city planners are now encouraging residents to plant more pollinator-friendly gardens alongside any new hives, rather than treating beekeeping as a stand-alone solution to pollinator decline.";
 
+const EMPLOYEE_TABLE: QuestionTable = {
+  caption: "Number of employees at five companies, 2022–2024",
+  headers: ["Company", "2022", "2023", "2024"],
+  rows: [
+    ["P", "480", "540", "600"],
+    ["Q", "350", "420", "400"],
+    ["R", "600", "560", "650"],
+    ["S", "275", "300", "330"],
+    ["T", "500", "450", "525"],
+  ],
+};
+
+const SMARTPHONE_TABLE: QuestionTable = {
+  caption: "Smartphones sold (in thousands) by Store X and Store Y",
+  headers: ["Month", "Store X", "Store Y"],
+  rows: [
+    ["Jan", "45", "38"],
+    ["Feb", "52", "46"],
+    ["Mar", "48", "50"],
+    ["Apr", "60", "42"],
+    ["May", "55", "58"],
+  ],
+};
+
 const sbiClerkPrelims: ExamSet = {
   id: "sbi-clerk-prelims",
   title: "SBI Clerk Prelims Practice Set",
@@ -29,7 +53,7 @@ const sbiClerkPrelims: ExamSet = {
     {
       id: "sbi1",
       subject: "English Language",
-      topic: "Reading Comprehension",
+      topic: "Reading Comprehension — Passage 1",
       difficulty: "Medium",
       text: `${SLEEP_PASSAGE}\n\nAccording to the passage, what is the primary function of deep sleep?`,
       options: [
@@ -44,7 +68,7 @@ const sbiClerkPrelims: ExamSet = {
     {
       id: "sbi2",
       subject: "English Language",
-      topic: "Reading Comprehension",
+      topic: "Reading Comprehension — Passage 1",
       difficulty: "Medium",
       text: `${SLEEP_PASSAGE}\n\nWhich stage of sleep is most closely associated with memory consolidation?`,
       options: ["Light sleep", "Deep sleep", "REM sleep", "All stages equally", "None of the above"],
@@ -53,7 +77,7 @@ const sbiClerkPrelims: ExamSet = {
     {
       id: "sbi3",
       subject: "English Language",
-      topic: "Reading Comprehension",
+      topic: "Reading Comprehension — Passage 1",
       difficulty: "Medium",
       text: `${SLEEP_PASSAGE}\n\nWhat happens to adults who consistently sleep fewer than six hours a night, as per the passage?`,
       options: [
@@ -68,7 +92,7 @@ const sbiClerkPrelims: ExamSet = {
     {
       id: "sbi4",
       subject: "English Language",
-      topic: "Reading Comprehension",
+      topic: "Reading Comprehension — Passage 1",
       difficulty: "Medium",
       text: `${SLEEP_PASSAGE}\n\nWhy do older adults often feel less rested despite spending similar time in bed, according to the passage?`,
       options: [
@@ -83,7 +107,7 @@ const sbiClerkPrelims: ExamSet = {
     {
       id: "sbi5",
       subject: "English Language",
-      topic: "Reading Comprehension",
+      topic: "Reading Comprehension — Passage 1",
       difficulty: "Medium",
       text: `${SLEEP_PASSAGE}\n\nWhat do researchers recommend regarding sleep timing?`,
       options: [
@@ -100,7 +124,7 @@ const sbiClerkPrelims: ExamSet = {
     {
       id: "sbi6",
       subject: "English Language",
-      topic: "Reading Comprehension",
+      topic: "Reading Comprehension — Passage 2",
       difficulty: "Medium",
       text: `${BEEKEEPING_PASSAGE}\n\nWhat is one reason advocates give in favour of urban beekeeping?`,
       options: [
@@ -115,7 +139,7 @@ const sbiClerkPrelims: ExamSet = {
     {
       id: "sbi7",
       subject: "English Language",
-      topic: "Reading Comprehension",
+      topic: "Reading Comprehension — Passage 2",
       difficulty: "Medium",
       text: `${BEEKEEPING_PASSAGE}\n\nWhat concern have some ecologists raised about urban beekeeping?`,
       options: [
@@ -130,7 +154,7 @@ const sbiClerkPrelims: ExamSet = {
     {
       id: "sbi8",
       subject: "English Language",
-      topic: "Reading Comprehension",
+      topic: "Reading Comprehension — Passage 2",
       difficulty: "Medium",
       text: `${BEEKEEPING_PASSAGE}\n\nWhat did studies conducted in several major cities find?`,
       options: [
@@ -145,7 +169,7 @@ const sbiClerkPrelims: ExamSet = {
     {
       id: "sbi9",
       subject: "English Language",
-      topic: "Reading Comprehension",
+      topic: "Reading Comprehension — Passage 2",
       difficulty: "Medium",
       text: `${BEEKEEPING_PASSAGE}\n\nWhat are city planners now encouraging residents to do?`,
       options: [
@@ -160,7 +184,7 @@ const sbiClerkPrelims: ExamSet = {
     {
       id: "sbi10",
       subject: "English Language",
-      topic: "Reading Comprehension",
+      topic: "Reading Comprehension — Passage 2",
       difficulty: "Medium",
       text: `${BEEKEEPING_PASSAGE}\n\nWhich of the following best describes the overall tone of the passage?`,
       options: [
@@ -417,7 +441,8 @@ const sbiClerkPrelims: ExamSet = {
       subject: "Numerical Ability",
       topic: "Data Interpretation — Table",
       difficulty: "Medium",
-      text: "The following table shows the number of employees working in five companies (P, Q, R, S, T) during 2022, 2023 and 2024: P — 480, 540, 600; Q — 350, 420, 400; R — 600, 560, 650; S — 275, 300, 330; T — 500, 450, 525 (columns are 2022, 2023, 2024 respectively). What is the total number of employees in companies P and S together in 2024?",
+      text: "The following table shows the number of employees working in five companies (P, Q, R, S, T) during 2022, 2023 and 2024. Study the table and answer the question below.\n\nWhat is the total number of employees in companies P and S together in 2024?",
+      table: EMPLOYEE_TABLE,
       options: ["830", "900", "930", "960", "990"],
       correctAnswerIndex: 2,
     },
@@ -426,7 +451,8 @@ const sbiClerkPrelims: ExamSet = {
       subject: "Numerical Ability",
       topic: "Data Interpretation — Table",
       difficulty: "Medium",
-      text: "Using the same table (P — 480, 540, 600; Q — 350, 420, 400; R — 600, 560, 650; S — 275, 300, 330; T — 500, 450, 525 for 2022, 2023, 2024), what is the average number of employees in company Q over the three years?",
+      text: "Using the same table as above, what is the average number of employees in company Q over the three years?",
+      table: EMPLOYEE_TABLE,
       options: ["370", "380", "390", "400", "410"],
       correctAnswerIndex: 2,
     },
@@ -435,7 +461,8 @@ const sbiClerkPrelims: ExamSet = {
       subject: "Numerical Ability",
       topic: "Data Interpretation — Table",
       difficulty: "Medium",
-      text: "Using the same table (P — 480, 540, 600; Q — 350, 420, 400; R — 600, 560, 650; S — 275, 300, 330; T — 500, 450, 525 for 2022, 2023, 2024), the number of employees in company R in 2024 is approximately what percent more than that in 2023?",
+      text: "Using the same table as above, the number of employees in company R in 2024 is approximately what percent more than that in 2023?",
+      table: EMPLOYEE_TABLE,
       options: ["10%", "12%", "14%", "16%", "18%"],
       correctAnswerIndex: 3,
     },
@@ -444,7 +471,8 @@ const sbiClerkPrelims: ExamSet = {
       subject: "Numerical Ability",
       topic: "Data Interpretation — Table",
       difficulty: "Medium",
-      text: "Using the same table (P — 480, 540, 600; Q — 350, 420, 400; R — 600, 560, 650; S — 275, 300, 330; T — 500, 450, 525 for 2022, 2023, 2024), what is the total number of employees in all five companies in 2023?",
+      text: "Using the same table as above, what is the total number of employees in all five companies in 2023?",
+      table: EMPLOYEE_TABLE,
       options: ["2170", "2200", "2250", "2270", "2300"],
       correctAnswerIndex: 3,
     },
@@ -453,7 +481,8 @@ const sbiClerkPrelims: ExamSet = {
       subject: "Numerical Ability",
       topic: "Data Interpretation — Table",
       difficulty: "Medium",
-      text: "Using the same table (P — 480, 540, 600; Q — 350, 420, 400; R — 600, 560, 650; S — 275, 300, 330; T — 500, 450, 525 for 2022, 2023, 2024), which company recorded the highest percentage increase in employees from 2022 to 2024?",
+      text: "Using the same table as above, which company recorded the highest percentage increase in employees from 2022 to 2024?",
+      table: EMPLOYEE_TABLE,
       options: ["P", "Q", "R", "S", "T"],
       correctAnswerIndex: 0,
     },
@@ -464,7 +493,8 @@ const sbiClerkPrelims: ExamSet = {
       subject: "Numerical Ability",
       topic: "Data Interpretation — Bar Graph",
       difficulty: "Medium",
-      text: "The number of smartphones sold (in thousands) by Store X and Store Y over five months: Jan — X 45, Y 38; Feb — X 52, Y 46; Mar — X 48, Y 50; Apr — X 60, Y 42; May — X 55, Y 58. What is the total number of smartphones sold by both stores together in March?",
+      text: "The bar graph below shows the number of smartphones sold (in thousands) by Store X and Store Y over five months. Study the data and answer the question below.\n\nWhat is the total number of smartphones sold by both stores together in March?",
+      table: SMARTPHONE_TABLE,
       options: ["88,000", "92,000", "96,000", "98,000", "100,000"],
       correctAnswerIndex: 3,
     },
@@ -473,7 +503,8 @@ const sbiClerkPrelims: ExamSet = {
       subject: "Numerical Ability",
       topic: "Data Interpretation — Bar Graph",
       difficulty: "Medium",
-      text: "Using the same data (Jan — X 45, Y 38; Feb — X 52, Y 46; Mar — X 48, Y 50; Apr — X 60, Y 42; May — X 55, Y 58, in thousands), in which month was the absolute difference in sales between Store X and Store Y the highest, and what was that difference?",
+      text: "Using the same data as above, in which month was the absolute difference in sales between Store X and Store Y the highest, and what was that difference?",
+      table: SMARTPHONE_TABLE,
       options: ["Jan, 7,000", "Feb, 6,000", "Apr, 18,000", "May, 3,000", "Mar, 2,000"],
       correctAnswerIndex: 2,
     },
@@ -482,7 +513,8 @@ const sbiClerkPrelims: ExamSet = {
       subject: "Numerical Ability",
       topic: "Data Interpretation — Bar Graph",
       difficulty: "Medium",
-      text: "Using the same data (Jan — X 45, Y 38; Feb — X 52, Y 46; Mar — X 48, Y 50; Apr — X 60, Y 42; May — X 55, Y 58, in thousands), what is the average monthly sale of Store X over the five months (in thousands)?",
+      text: "Using the same data as above, what is the average monthly sale of Store X over the five months (in thousands)?",
+      table: SMARTPHONE_TABLE,
       options: ["48", "50", "52", "54", "56"],
       correctAnswerIndex: 2,
     },
@@ -491,7 +523,8 @@ const sbiClerkPrelims: ExamSet = {
       subject: "Numerical Ability",
       topic: "Data Interpretation — Bar Graph",
       difficulty: "Medium",
-      text: "Using the same data (Jan — X 45, Y 38; Feb — X 52, Y 46; Mar — X 48, Y 50; Apr — X 60, Y 42; May — X 55, Y 58, in thousands), the sales of Store X in April is approximately what percentage of its total sales over the five months?",
+      text: "Using the same data as above, the sales of Store X in April is approximately what percentage of its total sales over the five months?",
+      table: SMARTPHONE_TABLE,
       options: ["18%", "20%", "23%", "25%", "28%"],
       correctAnswerIndex: 2,
     },
@@ -500,7 +533,8 @@ const sbiClerkPrelims: ExamSet = {
       subject: "Numerical Ability",
       topic: "Data Interpretation — Bar Graph",
       difficulty: "Medium",
-      text: "Using the same data (Jan — X 45, Y 38; Feb — X 52, Y 46; Mar — X 48, Y 50; Apr — X 60, Y 42; May — X 55, Y 58, in thousands), what is the combined total number of smartphones sold by both stores over all five months (in thousands)?",
+      text: "Using the same data as above, what is the combined total number of smartphones sold by both stores over all five months (in thousands)?",
+      table: SMARTPHONE_TABLE,
       options: ["470", "482", "490", "494", "500"],
       correctAnswerIndex: 3,
     },

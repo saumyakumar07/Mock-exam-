@@ -1,11 +1,19 @@
 export type Difficulty = "Easy" | "Medium" | "Hard";
 
+/** A data table (e.g. for Data Interpretation questions), rendered as an actual <table>. */
+export interface QuestionTable {
+  caption?: string;
+  headers: string[];
+  rows: string[][];
+}
+
 export interface Question {
   id: string;
   subject: string;
   topic: string;
   difficulty: Difficulty;
   text: string;
+  table?: QuestionTable;
   options: string[];
   correctAnswerIndex: number;
   explanation?: string;
