@@ -8,15 +8,26 @@ import { createSession } from "@/lib/examEngine";
 import { sessionStore, resultStore } from "@/lib/storage";
 
 const DURATIONS = [
-  { label: "1 Hour", hours: 1 },
-  { label: "2 Hours", hours: 2 },
-  { label: "3 Hours", hours: 3 },
+  { label: "30 Min", minutes: 30 },
+  { label: "1 Hour", minutes: 60 },
+  { label: "1.5 Hours", minutes: 90 },
+  { label: "2 Hours", minutes: 120 },
+  { label: "2.5 Hours", minutes: 150 },
+  { label: "3 Hours", minutes: 180 },
 ];
+
+function formatMinutes(minutes: number): string {
+  const h = Math.floor(minutes / 60);
+  const m = minutes % 60;
+  if (h === 0) return `${m} minutes`;
+  if (m === 0) return `${h} hour${h > 1 ? "s" : ""}`;
+  return `${h} hour${h > 1 ? "s" : ""} ${m} minutes`;
+}
 
 export default function HomePage() {
   const router = useRouter();
   const [examId, setExamId] = useState(examSets[0]?.id ?? "");
-  const [hours, setHours] = useState<number>(1);
+  const [minutes, setMinutes] = useState<number>(60);
   const [starting, setStarting] = useState(false);
 
   const selectedExam = examSets.find((e) => e.id === examId);
@@ -26,7 +37,7 @@ export default function HomePage() {
     if (!selectedExam) return;
     setStarting(true);
     resultStore.clear();
-    const session = createSession(selectedExam.id, hours * 3600);
+    const session = createSession(selectedExam.id, minutes * 60);
     sessionStore.set(session);
     router.push("/exam");
   }
@@ -76,11 +87,11 @@ export default function HomePage() {
             <div className="grid grid-cols-3 gap-3">
               {DURATIONS.map((d) => (
                 <button
-                  key={d.hours}
+                  key={d.minutes}
                   type="button"
-                  onClick={() => setHours(d.hours)}
+                  onClick={() => setMinutes(d.minutes)}
                   className={`rounded-lg border-2 py-3 text-sm font-semibold transition-colors cursor-pointer ${
-                    hours === d.hours
+                    minutes === d.minutes
                       ? "border-blue-600 bg-blue-50 text-blue-700"
                       : "border-slate-200 text-slate-600 hover:border-slate-300"
                   }`}
@@ -95,7 +106,7 @@ export default function HomePage() {
             <div className="mb-6 rounded-lg bg-slate-50 border border-slate-200 p-4 text-sm text-slate-600">
               <p className="font-semibold text-slate-800 mb-2">Before you begin:</p>
               <ul className="list-disc list-inside space-y-1">
-                <li>{selectedExam.questions.length} questions, {hours} hour{hours > 1 ? "s" : ""} duration.</li>
+                <li>{selectedExam.questions.length} questions, {formatMinutes(minutes)} duration.</li>
                 <li>
                   Marking scheme: +{selectedExam.markingScheme.correct} for each correct answer,
                   &minus;{selectedExam.markingScheme.incorrect} for each incorrect answer.
