@@ -272,7 +272,7 @@ export default function ResultPage() {
                       {!q.isAnswered ? "Unanswered" : q.isCorrect ? "Correct" : "Incorrect"}
                     </span>
                   </div>
-                  <p className="text-sm text-slate-800 font-medium mb-3">{q.text}</p>
+                  <p className="text-sm text-slate-800 font-medium mb-3 whitespace-pre-line">{q.text}</p>
                   <div className="space-y-1.5">
                     {q.options.map((opt, i) => {
                       const isCorrectOpt = i === q.correctAnswerIndex;

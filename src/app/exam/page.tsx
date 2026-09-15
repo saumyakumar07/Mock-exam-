@@ -269,7 +269,7 @@ export default function ExamPage() {
               )}
             </div>
 
-            <p className="text-base sm:text-lg text-slate-900 font-medium mb-6 leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-900 font-medium mb-6 leading-relaxed whitespace-pre-line">
               <span className="text-slate-500">Q{session.currentIndex + 1}.</span> {q.text}
             </p>
 

@@ -4,7 +4,18 @@ import { ExamSet } from "@/types/exam";
  * SBI Clerk Prelims Practice Set — 100 questions transcribed from
  * SBI_Clerk_Prelims_Practice_Set_100Q.pdf, answers from
  * SBI_Clerk_Prelims_Practice_Set_AnswerKey.pdf.
+ *
+ * The app shows one question at a time with no separate "passage" panel,
+ * so each Reading Comprehension / Cloze question repeats the passage text
+ * inline before the question itself.
  */
+
+const SLEEP_PASSAGE =
+  "Recent research into sleep patterns has revealed that the human body follows a roughly 90-minute cycle during the night, moving through distinct stages of light sleep, deep sleep, and rapid eye movement (REM) sleep. Deep sleep is considered essential for physical recovery, as it is during this stage that the body repairs tissue and strengthens the immune system. REM sleep, on the other hand, plays a critical role in memory consolidation and emotional regulation. Scientists have found that adults who consistently sleep fewer than six hours a night show measurable declines in concentration and decision-making ability within just a few days. Interestingly, the amount of deep sleep a person gets tends to decrease with age, which may partly explain why older adults often report feeling less rested despite spending similar amounts of time in bed. Researchers now recommend maintaining a consistent sleep schedule, arguing that irregular sleep timing disrupts the body's internal clock even when total sleep duration remains unchanged.";
+
+const BEEKEEPING_PASSAGE =
+  "Over the past decade, beekeeping has moved from rural farms into the heart of many cities, with rooftops, balconies, and community gardens now hosting hives. Advocates argue that urban beekeeping helps counter the decline in bee populations caused by habitat loss and pesticide use in the countryside, since cities often offer a wider variety of flowering plants across parks, gardens, and street trees. However, some ecologists have raised concerns that the growing popularity of urban beekeeping may inadvertently harm wild pollinator species, such as native bees and butterflies, by increasing competition for limited nectar and pollen in dense urban areas. Studies conducted in several major cities found that areas with a high concentration of managed honeybee hives showed a measurable drop in the diversity of wild pollinator sightings nearby. As a result, some city planners are now encouraging residents to plant more pollinator-friendly gardens alongside any new hives, rather than treating beekeeping as a stand-alone solution to pollinator decline.";
+
 const sbiClerkPrelims: ExamSet = {
   id: "sbi-clerk-prelims",
   title: "SBI Clerk Prelims Practice Set",
@@ -20,7 +31,7 @@ const sbiClerkPrelims: ExamSet = {
       subject: "English Language",
       topic: "Reading Comprehension",
       difficulty: "Medium",
-      text: "According to the passage, what is the primary function of deep sleep?",
+      text: `${SLEEP_PASSAGE}\n\nAccording to the passage, what is the primary function of deep sleep?`,
       options: [
         "Emotional regulation",
         "Memory consolidation",
@@ -35,7 +46,7 @@ const sbiClerkPrelims: ExamSet = {
       subject: "English Language",
       topic: "Reading Comprehension",
       difficulty: "Medium",
-      text: "Which stage of sleep is most closely associated with memory consolidation?",
+      text: `${SLEEP_PASSAGE}\n\nWhich stage of sleep is most closely associated with memory consolidation?`,
       options: ["Light sleep", "Deep sleep", "REM sleep", "All stages equally", "None of the above"],
       correctAnswerIndex: 2,
     },
@@ -44,7 +55,7 @@ const sbiClerkPrelims: ExamSet = {
       subject: "English Language",
       topic: "Reading Comprehension",
       difficulty: "Medium",
-      text: "What happens to adults who consistently sleep fewer than six hours a night, as per the passage?",
+      text: `${SLEEP_PASSAGE}\n\nWhat happens to adults who consistently sleep fewer than six hours a night, as per the passage?`,
       options: [
         "They sleep more deeply",
         "They show measurable decline in concentration and decision-making within days",
@@ -59,7 +70,7 @@ const sbiClerkPrelims: ExamSet = {
       subject: "English Language",
       topic: "Reading Comprehension",
       difficulty: "Medium",
-      text: "Why do older adults often feel less rested despite spending similar time in bed, according to the passage?",
+      text: `${SLEEP_PASSAGE}\n\nWhy do older adults often feel less rested despite spending similar time in bed, according to the passage?`,
       options: [
         "They experience more REM sleep",
         "Their internal clock stops functioning",
@@ -74,7 +85,7 @@ const sbiClerkPrelims: ExamSet = {
       subject: "English Language",
       topic: "Reading Comprehension",
       difficulty: "Medium",
-      text: "What do researchers recommend regarding sleep timing?",
+      text: `${SLEEP_PASSAGE}\n\nWhat do researchers recommend regarding sleep timing?`,
       options: [
         "Sleeping as long as possible regardless of timing",
         "Maintaining a consistent sleep schedule",
@@ -91,7 +102,7 @@ const sbiClerkPrelims: ExamSet = {
       subject: "English Language",
       topic: "Reading Comprehension",
       difficulty: "Medium",
-      text: "What is one reason advocates give in favour of urban beekeeping?",
+      text: `${BEEKEEPING_PASSAGE}\n\nWhat is one reason advocates give in favour of urban beekeeping?`,
       options: [
         "Cities have no flowering plants",
         "Cities often offer a wider variety of flowering plants than the countryside",
@@ -106,7 +117,7 @@ const sbiClerkPrelims: ExamSet = {
       subject: "English Language",
       topic: "Reading Comprehension",
       difficulty: "Medium",
-      text: "What concern have some ecologists raised about urban beekeeping?",
+      text: `${BEEKEEPING_PASSAGE}\n\nWhat concern have some ecologists raised about urban beekeeping?`,
       options: [
         "It increases pesticide use",
         "It may harm wild pollinator species by increasing competition for nectar and pollen",
@@ -121,7 +132,7 @@ const sbiClerkPrelims: ExamSet = {
       subject: "English Language",
       topic: "Reading Comprehension",
       difficulty: "Medium",
-      text: "What did studies conducted in several major cities find?",
+      text: `${BEEKEEPING_PASSAGE}\n\nWhat did studies conducted in several major cities find?`,
       options: [
         "No change in wild pollinator diversity",
         "An increase in wild pollinator diversity near managed hives",
@@ -136,7 +147,7 @@ const sbiClerkPrelims: ExamSet = {
       subject: "English Language",
       topic: "Reading Comprehension",
       difficulty: "Medium",
-      text: "What are city planners now encouraging residents to do?",
+      text: `${BEEKEEPING_PASSAGE}\n\nWhat are city planners now encouraging residents to do?`,
       options: [
         "Stop all beekeeping activities",
         "Plant more pollinator-friendly gardens alongside any new hives",
@@ -151,7 +162,7 @@ const sbiClerkPrelims: ExamSet = {
       subject: "English Language",
       topic: "Reading Comprehension",
       difficulty: "Medium",
-      text: "Which of the following best describes the overall tone of the passage?",
+      text: `${BEEKEEPING_PASSAGE}\n\nWhich of the following best describes the overall tone of the passage?`,
       options: [
         "Entirely critical of urban beekeeping",
         "Entirely promotional of urban beekeeping",
@@ -168,7 +179,7 @@ const sbiClerkPrelims: ExamSet = {
       subject: "English Language",
       topic: "Cloze Test",
       difficulty: "Easy",
-      text: "Urban farming has become increasingly (11)_____ in cities around the world. Many residents are converting unused rooftops and balconies into small gardens to grow vegetables and herbs. This practice not only (12)_____ fresh produce but also helps reduce the carbon footprint associated with transporting food over long distances. Local governments have started to (13)_____ these initiatives by offering subsidies and training programs. However, experts caution that urban farming alone cannot (14)_____ a city's total food demand, and it should be seen as a (15)_____ to, rather than a replacement for, traditional agriculture. — Blank (11):",
+      text: "Urban farming has become increasingly (11)_____ in cities around the world. Many residents are converting unused rooftops and balconies into small gardens to grow vegetables and herbs. This practice not only (12)_____ fresh produce but also helps reduce the carbon footprint associated with transporting food over long distances. Local governments have started to (13)_____ these initiatives by offering subsidies and training programs. However, experts caution that urban farming alone cannot (14)_____ a city's total food demand, and it should be seen as a (15)_____ to, rather than a replacement for, traditional agriculture.\n\nWhich word correctly fills blank (11)?",
       options: ["popular", "rare", "illegal", "expensive", "forgotten"],
       correctAnswerIndex: 0,
     },
@@ -177,7 +188,7 @@ const sbiClerkPrelims: ExamSet = {
       subject: "English Language",
       topic: "Cloze Test",
       difficulty: "Easy",
-      text: "Urban farming has become increasingly (11)_____ in cities around the world. Many residents are converting unused rooftops and balconies into small gardens to grow vegetables and herbs. This practice not only (12)_____ fresh produce but also helps reduce the carbon footprint associated with transporting food over long distances. Local governments have started to (13)_____ these initiatives by offering subsidies and training programs. However, experts caution that urban farming alone cannot (14)_____ a city's total food demand, and it should be seen as a (15)_____ to, rather than a replacement for, traditional agriculture. — Blank (12):",
+      text: "Urban farming has become increasingly (11)_____ in cities around the world. Many residents are converting unused rooftops and balconies into small gardens to grow vegetables and herbs. This practice not only (12)_____ fresh produce but also helps reduce the carbon footprint associated with transporting food over long distances. Local governments have started to (13)_____ these initiatives by offering subsidies and training programs. However, experts caution that urban farming alone cannot (14)_____ a city's total food demand, and it should be seen as a (15)_____ to, rather than a replacement for, traditional agriculture.\n\nWhich word correctly fills blank (12)?",
       options: ["prevents", "provides", "removes", "denies", "restricts"],
       correctAnswerIndex: 1,
     },
@@ -186,7 +197,7 @@ const sbiClerkPrelims: ExamSet = {
       subject: "English Language",
       topic: "Cloze Test",
       difficulty: "Easy",
-      text: "Urban farming has become increasingly (11)_____ in cities around the world. Many residents are converting unused rooftops and balconies into small gardens to grow vegetables and herbs. This practice not only (12)_____ fresh produce but also helps reduce the carbon footprint associated with transporting food over long distances. Local governments have started to (13)_____ these initiatives by offering subsidies and training programs. However, experts caution that urban farming alone cannot (14)_____ a city's total food demand, and it should be seen as a (15)_____ to, rather than a replacement for, traditional agriculture. — Blank (13):",
+      text: "Urban farming has become increasingly (11)_____ in cities around the world. Many residents are converting unused rooftops and balconies into small gardens to grow vegetables and herbs. This practice not only (12)_____ fresh produce but also helps reduce the carbon footprint associated with transporting food over long distances. Local governments have started to (13)_____ these initiatives by offering subsidies and training programs. However, experts caution that urban farming alone cannot (14)_____ a city's total food demand, and it should be seen as a (15)_____ to, rather than a replacement for, traditional agriculture.\n\nWhich word correctly fills blank (13)?",
       options: ["discourage", "ignore", "support", "ban", "tax"],
       correctAnswerIndex: 2,
     },
@@ -195,7 +206,7 @@ const sbiClerkPrelims: ExamSet = {
       subject: "English Language",
       topic: "Cloze Test",
       difficulty: "Easy",
-      text: "Urban farming has become increasingly (11)_____ in cities around the world. Many residents are converting unused rooftops and balconies into small gardens to grow vegetables and herbs. This practice not only (12)_____ fresh produce but also helps reduce the carbon footprint associated with transporting food over long distances. Local governments have started to (13)_____ these initiatives by offering subsidies and training programs. However, experts caution that urban farming alone cannot (14)_____ a city's total food demand, and it should be seen as a (15)_____ to, rather than a replacement for, traditional agriculture. — Blank (14):",
+      text: "Urban farming has become increasingly (11)_____ in cities around the world. Many residents are converting unused rooftops and balconies into small gardens to grow vegetables and herbs. This practice not only (12)_____ fresh produce but also helps reduce the carbon footprint associated with transporting food over long distances. Local governments have started to (13)_____ these initiatives by offering subsidies and training programs. However, experts caution that urban farming alone cannot (14)_____ a city's total food demand, and it should be seen as a (15)_____ to, rather than a replacement for, traditional agriculture.\n\nWhich word correctly fills blank (14)?",
       options: ["meet", "reduce", "ignore", "create", "sell"],
       correctAnswerIndex: 0,
     },
@@ -204,7 +215,7 @@ const sbiClerkPrelims: ExamSet = {
       subject: "English Language",
       topic: "Cloze Test",
       difficulty: "Easy",
-      text: "Urban farming has become increasingly (11)_____ in cities around the world. Many residents are converting unused rooftops and balconies into small gardens to grow vegetables and herbs. This practice not only (12)_____ fresh produce but also helps reduce the carbon footprint associated with transporting food over long distances. Local governments have started to (13)_____ these initiatives by offering subsidies and training programs. However, experts caution that urban farming alone cannot (14)_____ a city's total food demand, and it should be seen as a (15)_____ to, rather than a replacement for, traditional agriculture. — Blank (15):",
+      text: "Urban farming has become increasingly (11)_____ in cities around the world. Many residents are converting unused rooftops and balconies into small gardens to grow vegetables and herbs. This practice not only (12)_____ fresh produce but also helps reduce the carbon footprint associated with transporting food over long distances. Local governments have started to (13)_____ these initiatives by offering subsidies and training programs. However, experts caution that urban farming alone cannot (14)_____ a city's total food demand, and it should be seen as a (15)_____ to, rather than a replacement for, traditional agriculture.\n\nWhich word correctly fills blank (15)?",
       options: ["replacement", "threat", "complement", "burden", "competitor"],
       correctAnswerIndex: 2,
     },
