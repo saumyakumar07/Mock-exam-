@@ -84,8 +84,34 @@ export default async function AdminPage({
     );
   }
 
-  const records = await listResultRecords<ResultRecord>();
-  records.sort((a, b) => b.submittedAt - a.submittedAt);
+  let records: ResultRecord[] = [];
+  let loadError: string | null = null;
+  try {
+    records = await listResultRecords<ResultRecord>();
+    records.sort((a, b) => b.submittedAt - a.submittedAt);
+  } catch (err) {
+    loadError = err instanceof Error ? err.message : "Unknown error while contacting Redis.";
+  }
+
+  if (loadError) {
+    return (
+      <main className="flex-1 flex items-center justify-center px-4 py-16 bg-slate-100">
+        <div className="max-w-lg bg-white border border-slate-200 rounded-xl shadow-sm p-6 text-sm text-slate-700">
+          <h1 className="text-lg font-bold text-slate-900 mb-2">Couldn&rsquo;t load results</h1>
+          <p className="mb-3">
+            The admin login worked, but fetching results from Redis failed. This usually means{" "}
+            <code className="bg-slate-100 px-1 rounded">UPSTASH_REDIS_REST_URL</code> or{" "}
+            <code className="bg-slate-100 px-1 rounded">UPSTASH_REDIS_REST_TOKEN</code> is missing
+            a character, has extra whitespace, or was copied from the wrong field in the Upstash
+            console.
+          </p>
+          <p className="font-mono text-xs bg-red-50 border border-red-200 text-red-700 rounded-lg px-3 py-2 break-all">
+            {loadError}
+          </p>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className="flex-1 bg-slate-100 px-4 sm:px-6 py-8">
