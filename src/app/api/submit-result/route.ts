@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { saveResultRecord, isResultsStoreConfigured } from "@/lib/redis";
+import { saveResultRecord, hasRedisEnvVars } from "@/lib/redis";
 import { ResultRecord } from "@/types/exam";
 
 export async function POST(req: NextRequest) {
-  if (!isResultsStoreConfigured()) {
+  if (!hasRedisEnvVars()) {
     // Result storage isn't set up — fail quietly so the exam flow never breaks for the test-taker.
     return NextResponse.json({ stored: false }, { status: 200 });
   }

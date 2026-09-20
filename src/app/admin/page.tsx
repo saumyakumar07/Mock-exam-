@@ -1,5 +1,5 @@
 import { isAdminAuthed, isAdminConfigured } from "@/lib/adminAuth";
-import { listResultRecords, isResultsStoreConfigured } from "@/lib/redis";
+import { listResultRecords, hasRedisEnvVars } from "@/lib/redis";
 import { ResultRecord } from "@/types/exam";
 import { formatDuration } from "@/lib/examEngine";
 
@@ -69,7 +69,7 @@ export default async function AdminPage({
     );
   }
 
-  if (!isResultsStoreConfigured()) {
+  if (!hasRedisEnvVars()) {
     return (
       <main className="flex-1 flex items-center justify-center px-4 py-16 bg-slate-100">
         <div className="max-w-md bg-white border border-slate-200 rounded-xl shadow-sm p-6 text-sm text-slate-700">
