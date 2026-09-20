@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getExamSet } from "@/data/exams";
 import { sessionStore, resultStore } from "@/lib/storage";
-import { questionStatus, formatClock } from "@/lib/examEngine";
+import { questionStatus, formatClock, computeAnalytics } from "@/lib/examEngine";
 import { ExamSession, ExamResult, QuestionStatus } from "@/types/exam";
 import QuestionPalette from "@/components/exam/QuestionPalette";
 import SubmitModal from "@/components/exam/SubmitModal";
@@ -79,6 +79,7 @@ export default function ExamPage() {
     const remaining = auto ? 0 : Math.max(0, Math.round((flushed.endsAt - now) / 1000));
     const result: ExamResult = {
       examId: flushed.examId,
+      candidateName: flushed.candidateName,
       startedAt: flushed.startedAt,
       submittedAt: now,
       durationSeconds: flushed.durationSeconds,
@@ -91,6 +92,31 @@ export default function ExamPage() {
     };
     resultStore.set(result);
     sessionStore.clear();
+
+    const analytics = computeAnalytics(examSet, result);
+    fetch("/api/submit-result", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      keepalive: true,
+      body: JSON.stringify({
+        candidateName: result.candidateName,
+        examId: result.examId,
+        examTitle: examSet.title,
+        totalQuestions: analytics.totalQuestions,
+        attempted: analytics.attempted,
+        correct: analytics.correct,
+        incorrect: analytics.incorrect,
+        unanswered: analytics.unanswered,
+        score: analytics.score,
+        maxScore: analytics.maxScore,
+        percentage: analytics.percentage,
+        timeTakenMs: analytics.timeTakenMs,
+        autoSubmitted: analytics.autoSubmitted,
+      }),
+    }).catch(() => {
+      // Best-effort: the test-taker's own result page still works from local storage either way.
+    });
+
     router.replace("/result");
   };
 
@@ -208,7 +234,7 @@ export default function ExamPage() {
         <div>
           <p className="font-semibold text-sm sm:text-base">{examSet.title}</p>
           <p className="text-xs text-slate-300">
-            Question {session.currentIndex + 1} of {examSet.questions.length}
+            {session.candidateName} · Question {session.currentIndex + 1} of {examSet.questions.length}
           </p>
         </div>
         <div className="flex items-center gap-4">

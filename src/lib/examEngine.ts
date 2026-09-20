@@ -7,10 +7,15 @@ import {
   QuestionTable,
 } from "@/types/exam";
 
-export function createSession(examId: string, durationSeconds: number): ExamSession {
+export function createSession(
+  examId: string,
+  durationSeconds: number,
+  candidateName: string
+): ExamSession {
   const now = Date.now();
   return {
     examId,
+    candidateName,
     durationSeconds,
     startedAt: now,
     endsAt: now + durationSeconds * 1000,

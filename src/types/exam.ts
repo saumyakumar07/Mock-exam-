@@ -39,6 +39,7 @@ export type NumberMap = Record<string, number>;
 
 export interface ExamSession {
   examId: string;
+  candidateName: string;
   durationSeconds: number;
   startedAt: number;
   endsAt: number;
@@ -52,6 +53,7 @@ export interface ExamSession {
 
 export interface ExamResult {
   examId: string;
+  candidateName: string;
   startedAt: number;
   submittedAt: number;
   durationSeconds: number;
@@ -61,6 +63,25 @@ export interface ExamResult {
   marked: BooleanMap;
   timeSpentMs: NumberMap;
   answerChangeCount: NumberMap;
+}
+
+/** Summary record persisted server-side so an admin can see every submission. */
+export interface ResultRecord {
+  id: string;
+  candidateName: string;
+  examId: string;
+  examTitle: string;
+  submittedAt: number;
+  totalQuestions: number;
+  attempted: number;
+  correct: number;
+  incorrect: number;
+  unanswered: number;
+  score: number;
+  maxScore: number;
+  percentage: number;
+  timeTakenMs: number;
+  autoSubmitted: boolean;
 }
 
 export type QuestionStatus =

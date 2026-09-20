@@ -60,6 +60,7 @@ export default function ResultPage() {
             <p className="text-sm font-semibold text-blue-700 uppercase tracking-wide">Result</p>
             <h1 className="text-2xl sm:text-3xl font-bold text-slate-900">{examSet.title}</h1>
             <p className="text-sm text-slate-500 mt-1">
+              {result.candidateName} ·{" "}
               {result.autoSubmitted
                 ? "Time expired — the exam was submitted automatically."
                 : "Submitted successfully."}
