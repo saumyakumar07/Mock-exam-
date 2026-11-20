@@ -17,7 +17,7 @@ const certifencePtmpV2Quiz: ExamSet = {
   id: "certifence-ptmp-v2-quiz",
   title: "PTMP v2 — Comprehensive Quiz",
   description:
-    "50 questions covering every PTMP v2 module: Linux, Windows & PowerShell, Scripting, OSINT, Scanning & Enumeration, Vulnerability Assessment, Initial Access, Privilege Escalation & Lateral Movement, Post Exploitation, Reporting, Network, Active Directory, API and Web Pentesting.",
+    "50 questions covering every PTMP v2 module: Linux, Windows & PowerShell, Scripting, OSINT, Scanning & Enumeration, Vulnerability Assessment, Initial Access, Privilege Escalation & Lateral Movement, Post Exploitation, Reporting, Network, Active Directory and Web Pentesting.",
   markingScheme: { correct: 1, incorrect: 0.25 },
   questions: [
     // ── Linux for Pentesters ──────────────────────────────────────────────
@@ -297,10 +297,26 @@ const certifencePtmpV2Quiz: ExamSet = {
       explanation:
         "Risk ratings are based on structured criteria like impact and exploitability, not personal opinion.",
     },
+    {
+      id: "ptmp-q21",
+      subject: "Vulnerability Assessment & Risk Rating",
+      topic: "CVE",
+      difficulty: "Easy",
+      text: "What does CVE stand for?",
+      options: [
+        "Common Vulnerabilities and Exposures",
+        "Critical Vulnerability Evaluation",
+        "Common Virus Exploit",
+        "Cyber Vulnerability Engine",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "CVE is the standard public dictionary of named, uniquely identified vulnerabilities.",
+    },
 
     // ── Initial Access and Exploitation ───────────────────────────────────
     {
-      id: "ptmp-q21",
+      id: "ptmp-q22",
       subject: "Initial Access and Exploitation",
       topic: "Initial Access",
       difficulty: "Easy",
@@ -316,7 +332,7 @@ const certifencePtmpV2Quiz: ExamSet = {
         "Initial access is about turning an identified vulnerability into an actual foothold.",
     },
     {
-      id: "ptmp-q22",
+      id: "ptmp-q23",
       subject: "Initial Access and Exploitation",
       topic: "Access Vectors",
       difficulty: "Easy",
@@ -332,7 +348,7 @@ const certifencePtmpV2Quiz: ExamSet = {
         "Phishing remains one of the most common ways attackers first get into an environment.",
     },
     {
-      id: "ptmp-q23",
+      id: "ptmp-q24",
       subject: "Initial Access and Exploitation",
       topic: "Exploits",
       difficulty: "Easy",
@@ -348,7 +364,7 @@ const certifencePtmpV2Quiz: ExamSet = {
         "An exploit is the code or technique that takes advantage of a specific vulnerability.",
     },
     {
-      id: "ptmp-q24",
+      id: "ptmp-q25",
       subject: "Initial Access and Exploitation",
       topic: "Metasploit",
       difficulty: "Easy",
@@ -366,7 +382,7 @@ const certifencePtmpV2Quiz: ExamSet = {
 
     // ── Privilege Escalation and Lateral Movement ─────────────────────────
     {
-      id: "ptmp-q25",
+      id: "ptmp-q26",
       subject: "Privilege Escalation and Lateral Movement",
       topic: "Privilege Escalation",
       difficulty: "Easy",
@@ -382,7 +398,7 @@ const certifencePtmpV2Quiz: ExamSet = {
         "Privilege escalation means obtaining more access than the compromised account originally had.",
     },
     {
-      id: "ptmp-q26",
+      id: "ptmp-q27",
       subject: "Privilege Escalation and Lateral Movement",
       topic: "Horizontal Escalation",
       difficulty: "Medium",
@@ -398,7 +414,7 @@ const certifencePtmpV2Quiz: ExamSet = {
         "Horizontal escalation moves sideways between accounts of the same privilege level, not upward.",
     },
     {
-      id: "ptmp-q27",
+      id: "ptmp-q28",
       subject: "Privilege Escalation and Lateral Movement",
       topic: "Pass-the-Hash",
       difficulty: "Medium",
@@ -414,7 +430,7 @@ const certifencePtmpV2Quiz: ExamSet = {
         "Pass-the-Hash reuses a captured password hash directly for authentication, skipping the need to crack it.",
     },
     {
-      id: "ptmp-q28",
+      id: "ptmp-q29",
       subject: "Privilege Escalation and Lateral Movement",
       topic: "Lateral Movement",
       difficulty: "Easy",
@@ -432,7 +448,7 @@ const certifencePtmpV2Quiz: ExamSet = {
 
     // ── Post Exploitation ─────────────────────────────────────────────────
     {
-      id: "ptmp-q29",
+      id: "ptmp-q30",
       subject: "Post Exploitation",
       topic: "Persistence",
       difficulty: "Easy",
@@ -448,7 +464,7 @@ const certifencePtmpV2Quiz: ExamSet = {
         "Post-exploitation includes maintaining access (persistence) once a foothold is gained.",
     },
     {
-      id: "ptmp-q30",
+      id: "ptmp-q31",
       subject: "Post Exploitation",
       topic: "Data Exfiltration",
       difficulty: "Easy",
@@ -464,7 +480,7 @@ const certifencePtmpV2Quiz: ExamSet = {
         "Exfiltration demonstrates impact by actually pulling sensitive data out, under agreed rules of engagement.",
     },
     {
-      id: "ptmp-q31",
+      id: "ptmp-q32",
       subject: "Post Exploitation",
       topic: "Cleanup",
       difficulty: "Medium",
@@ -482,7 +498,7 @@ const certifencePtmpV2Quiz: ExamSet = {
 
     // ── Reporting ─────────────────────────────────────────────────────────
     {
-      id: "ptmp-q32",
+      id: "ptmp-q33",
       subject: "Reporting",
       topic: "Report Contents",
       difficulty: "Easy",
@@ -498,7 +514,7 @@ const certifencePtmpV2Quiz: ExamSet = {
         "A pentest report's core value is documented findings with evidence and clear remediation steps.",
     },
     {
-      id: "ptmp-q33",
+      id: "ptmp-q34",
       subject: "Reporting",
       topic: "Executive Summary",
       difficulty: "Easy",
@@ -514,7 +530,7 @@ const certifencePtmpV2Quiz: ExamSet = {
         "The executive summary translates technical risk into business terms for leadership.",
     },
     {
-      id: "ptmp-q34",
+      id: "ptmp-q35",
       subject: "Reporting",
       topic: "Evidence",
       difficulty: "Easy",
@@ -531,7 +547,7 @@ const certifencePtmpV2Quiz: ExamSet = {
 
     // ── Network Penetration Testing ───────────────────────────────────────
     {
-      id: "ptmp-q35",
+      id: "ptmp-q36",
       subject: "Network Penetration Testing",
       topic: "ARP Spoofing",
       difficulty: "Easy",
@@ -541,7 +557,7 @@ const certifencePtmpV2Quiz: ExamSet = {
       explanation: "ARP spoofing poisons ARP caches to redirect traffic on a local network segment.",
     },
     {
-      id: "ptmp-q36",
+      id: "ptmp-q37",
       subject: "Network Penetration Testing",
       topic: "SMB Relay",
       difficulty: "Medium",
@@ -557,7 +573,7 @@ const certifencePtmpV2Quiz: ExamSet = {
         "SMB relay forwards captured NTLM authentication to another host instead of cracking it.",
     },
     {
-      id: "ptmp-q37",
+      id: "ptmp-q38",
       subject: "Network Penetration Testing",
       topic: "Traffic Analysis",
       difficulty: "Easy",
@@ -567,7 +583,7 @@ const certifencePtmpV2Quiz: ExamSet = {
       explanation: "Wireshark captures and dissects network packets for traffic analysis.",
     },
     {
-      id: "ptmp-q38",
+      id: "ptmp-q39",
       subject: "Network Penetration Testing",
       topic: "VLAN Hopping",
       difficulty: "Medium",
@@ -582,10 +598,26 @@ const certifencePtmpV2Quiz: ExamSet = {
       explanation:
         "VLAN hopping lets an attacker reach traffic on VLANs they shouldn't normally access.",
     },
+    {
+      id: "ptmp-q40",
+      subject: "Network Penetration Testing",
+      topic: "UDP Scanning",
+      difficulty: "Easy",
+      text: "Which Nmap option is used to scan for open UDP ports rather than TCP ports?",
+      options: [
+        "-sS",
+        "-sU",
+        "-sT",
+        "-sA",
+      ],
+      correctAnswerIndex: 1,
+      explanation:
+        "-sU runs a UDP scan; -sS, -sT, and -sA are all TCP scan variants.",
+    },
 
     // ── Active Directory Pentesting ───────────────────────────────────────
     {
-      id: "ptmp-q39",
+      id: "ptmp-q41",
       subject: "Active Directory Pentesting",
       topic: "Domain Controller",
       difficulty: "Easy",
@@ -601,7 +633,7 @@ const certifencePtmpV2Quiz: ExamSet = {
         "The Domain Controller handles authentication (via Kerberos/NTLM) and policy enforcement.",
     },
     {
-      id: "ptmp-q40",
+      id: "ptmp-q42",
       subject: "Active Directory Pentesting",
       topic: "Kerberoasting",
       difficulty: "Medium",
@@ -617,7 +649,7 @@ const certifencePtmpV2Quiz: ExamSet = {
         "Kerberoasting requests service tickets for accounts with an SPN, then cracks them offline for credentials.",
     },
     {
-      id: "ptmp-q41",
+      id: "ptmp-q43",
       subject: "Active Directory Pentesting",
       topic: "Golden Ticket",
       difficulty: "Medium",
@@ -632,7 +664,7 @@ const certifencePtmpV2Quiz: ExamSet = {
       explanation: "A Golden Ticket is a forged TGT built using the compromised krbtgt account's hash.",
     },
     {
-      id: "ptmp-q42",
+      id: "ptmp-q44",
       subject: "Active Directory Pentesting",
       topic: "AD Forest",
       difficulty: "Easy",
@@ -648,75 +680,25 @@ const certifencePtmpV2Quiz: ExamSet = {
         "A forest is the outermost AD boundary, containing one or more trees and domains.",
     },
 
-    // ── API Penetration Testing ───────────────────────────────────────────
-    {
-      id: "ptmp-q43",
-      subject: "API Penetration Testing",
-      topic: "BOLA",
-      difficulty: "Medium",
-      text: "Broken Object Level Authorization (BOLA) occurs when:",
-      options: [
-        "An API encrypts data incorrectly",
-        "An API fails to verify that a requested object belongs to the requesting user",
-        "An API has no rate limiting",
-        "An API uses SOAP instead of REST",
-      ],
-      correctAnswerIndex: 1,
-      explanation:
-        "BOLA happens when an endpoint checks authentication but not ownership of the specific object requested.",
-    },
-    {
-      id: "ptmp-q44",
-      subject: "API Penetration Testing",
-      topic: "JWT",
-      difficulty: "Medium",
-      text: "What is the primary purpose of a JWT's signature?",
-      options: [
-        "To encrypt the payload",
-        "To prove the header and payload have not been tampered with",
-        "To compress the token",
-        "To define the API's rate limit",
-      ],
-      correctAnswerIndex: 1,
-      explanation:
-        "The signature verifies integrity — it doesn't encrypt the (readable) header and payload.",
-    },
     {
       id: "ptmp-q45",
-      subject: "API Penetration Testing",
-      topic: "Mass Assignment",
-      difficulty: "Medium",
-      text: "Mass assignment vulnerabilities typically occur because:",
+      subject: "Active Directory Pentesting",
+      topic: "Kerberos",
+      difficulty: "Easy",
+      text: "Which authentication protocol does Active Directory use by default in modern Windows environments?",
       options: [
-        "The API rejects all input",
-        "The API binds an entire request body to a model with no field allowlist",
-        "The API uses HTTPS",
-        "The API has too many endpoints",
+        "Kerberos",
+        "FTP",
+        "SNMP",
+        "Telnet",
       ],
-      correctAnswerIndex: 1,
+      correctAnswerIndex: 0,
       explanation:
-        'Without an allowlist, extra fields in the request body (like "role") get bound straight to the model.',
+        "Kerberos is the default AD authentication protocol; NTLM is kept mainly for backward compatibility.",
     },
-    {
-      id: "ptmp-q46",
-      subject: "API Penetration Testing",
-      topic: "SSRF",
-      difficulty: "Medium",
-      text: "SSRF in an API typically allows an attacker to:",
-      options: [
-        "Crash the client browser",
-        "Make the server send requests to internal or unintended destinations",
-        "Change the API's documentation",
-        "Bypass CAPTCHA only",
-      ],
-      correctAnswerIndex: 1,
-      explanation:
-        "SSRF abuses a server-side URL fetch to reach internal addresses the attacker couldn't reach directly.",
-    },
-
     // ── Web Penetration Testing ───────────────────────────────────────────
     {
-      id: "ptmp-q47",
+      id: "ptmp-q46",
       subject: "Web Penetration Testing",
       topic: "Stored XSS",
       difficulty: "Easy",
@@ -732,7 +714,7 @@ const certifencePtmpV2Quiz: ExamSet = {
         "Stored XSS persists the payload server-side, so it executes for every user who views the affected page.",
     },
     {
-      id: "ptmp-q48",
+      id: "ptmp-q47",
       subject: "Web Penetration Testing",
       topic: "CSRF",
       difficulty: "Medium",
@@ -748,7 +730,7 @@ const certifencePtmpV2Quiz: ExamSet = {
         "CSRF relies on the browser auto-sending the victim's session cookie with a forged cross-site request.",
     },
     {
-      id: "ptmp-q49",
+      id: "ptmp-q48",
       subject: "Web Penetration Testing",
       topic: "Burp Suite",
       difficulty: "Easy",
@@ -759,7 +741,7 @@ const certifencePtmpV2Quiz: ExamSet = {
         "Repeater is built for sending the same request over and over with manual tweaks between tries.",
     },
     {
-      id: "ptmp-q50",
+      id: "ptmp-q49",
       subject: "Web Penetration Testing",
       topic: "Path Traversal",
       difficulty: "Medium",
@@ -768,6 +750,22 @@ const certifencePtmpV2Quiz: ExamSet = {
       correctAnswerIndex: 2,
       explanation:
         "../ sequences walk up the directory tree to reach files outside the intended directory.",
+    },
+    {
+      id: "ptmp-q50",
+      subject: "Web Penetration Testing",
+      topic: "Clickjacking",
+      difficulty: "Easy",
+      text: "Which HTTP response header helps protect a page against clickjacking?",
+      options: [
+        "Content-Type",
+        "X-Frame-Options",
+        "Set-Cookie",
+        "Accept-Language",
+      ],
+      correctAnswerIndex: 1,
+      explanation:
+        "X-Frame-Options (or the frame-ancestors CSP directive) controls whether a page can be embedded in a frame.",
     },
   ],
 };
