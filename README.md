@@ -1,12 +1,12 @@
-# Exam Prep — Mock Test Platform
+# CERTIFENCE — Cybersecurity Quiz Platform
 
-A realistic, timed mock-exam platform for practicing government competitive exams. Built with Next.js, TypeScript, and Tailwind CSS. Questions live in code; every submitted result is saved to a small Redis database so an admin can review everyone's scores.
+A timed cybersecurity / penetration-testing quiz platform owned and operated by **CERTIFENCE Pvt. Ltd.** Built with Next.js, TypeScript, and Tailwind CSS. Questions live in code; every submitted result is saved to a small Redis database so an admin can review everyone's scores.
 
 ## Features
 
 - Home screen with a name field, a duration picker (30 min – 3 hours), and a quote of the day
-- Full exam interface: question palette, subject tabs, mark-for-review, clear response, previous/next navigation, and a live countdown timer that auto-submits at zero
-- Data Interpretation questions render as real tables, matching the source material
+- Full quiz interface: question palette, subject tabs, mark-for-review, clear response, previous/next navigation, and a live countdown timer that auto-submits at zero
+- Questions can optionally include a data table (rendered as a real `<table>`)
 - Submit confirmation that warns about unanswered questions
 - Results page with score, accuracy, percentage, subject-wise breakdown, time-per-question analysis, weak/strong areas, and a full answer review
 - Every submission is saved server-side (name + score summary), viewable on a password-protected `/admin` page
@@ -30,21 +30,25 @@ Results are saved to a free [Upstash Redis](https://console.upstash.com) databas
 3. Create a free database at [console.upstash.com](https://console.upstash.com) (Redis → Create Database), open its **REST API** tab, and copy the URL and token into `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`.
 4. Restart `npm run dev`.
 
-Once a candidate submits an exam, their name and score summary are saved automatically. Visit `/admin`, log in with your password, and you'll see every submission — name, test, score, percentage, correct/incorrect/unanswered counts, time taken, and submission time — most recent first.
+Once a candidate submits a quiz, their name and score summary are saved automatically. Visit `/admin`, log in with your password, and you'll see every submission — name, test, score, percentage, correct/incorrect/unanswered counts, time taken, and submission time — most recent first.
 
 For production on Vercel, add the same three variables in **Project Settings → Environment Variables**.
 
-## Adding a new mock test
+## Branding and logo
 
-Questions are plain TypeScript, so a new mock test is just a new file:
+All branding lives in [`src/components/brand/BrandLogo.tsx`](src/components/brand/BrandLogo.tsx) (company name, platform name, tagline, logo). To replace the logo, overwrite `public/brand/certifence-logo.png` and update `LOGO_WIDTH` / `LOGO_HEIGHT` in that file to the new image's pixel size. The browser-tab icon is `src/app/icon.png`.
 
-1. Copy [`src/data/exams/pfrdaGradeAPhase1Set1Paper1.ts`](src/data/exams/pfrdaGradeAPhase1Set1Paper1.ts) to a new file and fill in your questions. Each question needs a unique `id`, a `subject`/`topic`, a `difficulty`, `options`, and a `correctAnswerIndex`. Use the `table` field for Data Interpretation questions so they render as real tables instead of run-on text.
+## Adding a new quiz
+
+Questions are plain TypeScript, so a new quiz is just a new file:
+
+1. Copy [`src/data/exams/certifencePtmpV2Quiz.ts`](src/data/exams/certifencePtmpV2Quiz.ts) to a new file and fill in your questions. Each question needs a unique `id`, a `subject` (module — drives the subject tabs and the result breakdown), a `topic`, a `difficulty`, `options`, a `correctAnswerIndex` (0 = A), and optionally an `explanation` shown in the answer review.
 2. Register it in [`src/data/exams/index.ts`](src/data/exams/index.ts) by importing it and adding it to the `examSets` array.
-3. It will automatically appear in the "Select Mock Test" dropdown on the home page (the dropdown only shows once there is more than one test).
+3. It will automatically appear in the "Select Quiz" dropdown on the home page (the dropdown only shows once there is more than one quiz).
 
-The `markingScheme` on each `ExamSet` controls positive/negative marking (defaults to +1 / −0.25, a common SSC/banking pattern) — adjust per test as needed.
+The `markingScheme` on each `ExamSet` controls positive/negative marking (+1 / −0.25 by default) — adjust per quiz as needed.
 
-**Important:** the app shows one question at a time with no shared "passage" or "puzzle setup" panel. Any question that depends on shared context (a reading passage, a DI table's numbers, a puzzle's clues, a coding rule) must repeat that context inline in its own `text`, usually via a shared constant — see how `SEATING_SETUP`, `RETIREMENT_PASSAGE`, etc. are reused across questions in `pfrdaGradeAPhase1Set1Paper1.ts`.
+**Important:** the app shows one question at a time with no shared "passage" or "puzzle setup" panel. Any question that depends on shared context (a reading passage, a DI table's numbers, a puzzle's clues, a coding rule) must repeat that context inline in its own `text`, usually via a shared constant reused across those questions.
 
 ## Deploying to Vercel
 

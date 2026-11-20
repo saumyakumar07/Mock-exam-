@@ -9,6 +9,7 @@ import { ExamSession, ExamResult, QuestionStatus } from "@/types/exam";
 import QuestionPalette from "@/components/exam/QuestionPalette";
 import SubmitModal from "@/components/exam/SubmitModal";
 import QuestionDataTable from "@/components/exam/QuestionDataTable";
+import BrandLogo from "@/components/brand/BrandLogo";
 
 export default function ExamPage() {
   const router = useRouter();
@@ -217,7 +218,7 @@ export default function ExamPage() {
   if (!loaded || !session || !examSet) {
     return (
       <main className="flex-1 flex items-center justify-center">
-        <p className="text-slate-500">Loading exam…</p>
+        <p className="text-zinc-400">Loading quiz…</p>
       </main>
     );
   }
@@ -229,18 +230,21 @@ export default function ExamPage() {
   const isCritical = remainingSeconds <= 300;
 
   return (
-    <main className="flex-1 flex flex-col bg-slate-100">
-      <header className="bg-slate-900 text-white px-4 sm:px-6 py-3 flex items-center justify-between flex-wrap gap-3">
-        <div>
-          <p className="font-semibold text-sm sm:text-base">{examSet.title}</p>
-          <p className="text-xs text-slate-300">
-            {session.candidateName} · Question {session.currentIndex + 1} of {examSet.questions.length}
-          </p>
+    <main className="flex-1 flex flex-col">
+      <header className="bg-black text-white px-4 sm:px-6 py-3 flex items-center justify-between flex-wrap gap-3 border-b border-orange-500/40">
+        <div className="flex items-center gap-4 min-w-0">
+          <BrandLogo height={30} className="hidden sm:block" />
+          <div className="sm:border-l sm:border-zinc-800 sm:pl-4 min-w-0">
+            <p className="font-semibold text-sm sm:text-base">{examSet.title}</p>
+            <p className="text-xs text-zinc-400">
+              {session.candidateName} · Question {session.currentIndex + 1} of {examSet.questions.length}
+            </p>
+          </div>
         </div>
         <div className="flex items-center gap-4">
           <div
             className={`font-mono text-lg sm:text-xl font-bold px-3 py-1.5 rounded-lg ${
-              isCritical ? "bg-red-600 timer-critical" : "bg-slate-800"
+              isCritical ? "bg-red-600 timer-critical" : "bg-zinc-900 border border-zinc-800"
             }`}
           >
             {formatClock(remainingSeconds)}
@@ -248,15 +252,15 @@ export default function ExamPage() {
           <button
             type="button"
             onClick={() => setShowSubmitModal(true)}
-            className="bg-white text-slate-900 font-semibold text-sm px-4 py-2 rounded-lg hover:bg-slate-200 cursor-pointer"
+            className="bg-orange-500 text-zinc-950 font-semibold text-sm px-4 py-2 rounded-lg hover:bg-orange-400 cursor-pointer"
           >
-            Submit Exam
+            Submit Quiz
           </button>
         </div>
       </header>
 
       {subjects.length > 1 && (
-        <div className="bg-slate-800 px-4 sm:px-6 flex gap-1 overflow-x-auto">
+        <div className="bg-zinc-950 border-b border-zinc-800 px-4 sm:px-6 flex gap-1 overflow-x-auto">
           {subjects.map((subj) => {
             const firstIdx = examSet.questions.findIndex((qq) => qq.subject === subj);
             const isActive = q.subject === subj;
@@ -267,8 +271,8 @@ export default function ExamPage() {
                 onClick={() => goTo(firstIdx)}
                 className={`px-3 py-2 text-xs sm:text-sm font-medium whitespace-nowrap border-b-2 cursor-pointer ${
                   isActive
-                    ? "border-blue-500 text-white"
-                    : "border-transparent text-slate-400 hover:text-slate-200"
+                    ? "border-orange-500 text-white"
+                    : "border-transparent text-zinc-500 hover:text-zinc-200"
                 }`}
               >
                 {subj}
@@ -280,24 +284,24 @@ export default function ExamPage() {
 
       <div className="flex-1 flex flex-col lg:flex-row gap-4 p-4 sm:p-6 max-w-7xl w-full mx-auto">
         {/* Main question area */}
-        <section className="flex-1 bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col">
+        <section className="flex-1 bg-zinc-900 rounded-xl border border-zinc-800 shadow-sm flex flex-col">
           <div className="p-5 sm:p-6 flex-1">
             <div className="flex items-center gap-2 mb-4 flex-wrap">
-              <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
+              <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-orange-500/10 text-orange-400 border border-orange-500/30">
                 {q.subject}
               </span>
-              <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 border border-slate-200">
+              <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-zinc-800 text-zinc-300 border border-zinc-800">
                 {q.topic}
               </span>
               {isMarked && (
-                <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-purple-50 text-purple-700 border border-purple-200">
+                <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/30">
                   Marked for Review
                 </span>
               )}
             </div>
 
-            <p className="text-base sm:text-lg text-slate-900 font-medium mb-4 leading-relaxed whitespace-pre-line">
-              <span className="text-slate-500">Q{session.currentIndex + 1}.</span> {q.text}
+            <p className="text-base sm:text-lg text-zinc-50 font-medium mb-4 leading-relaxed whitespace-pre-line">
+              <span className="text-zinc-400">Q{session.currentIndex + 1}.</span> {q.text}
             </p>
 
             {q.table && <QuestionDataTable table={q.table} />}
@@ -313,20 +317,20 @@ export default function ExamPage() {
                     aria-pressed={selected}
                     className={`w-full text-left flex items-start gap-3 rounded-lg border-2 px-4 py-3 transition-colors cursor-pointer ${
                       selected
-                        ? "border-blue-600 bg-blue-50"
-                        : "border-slate-200 hover:border-slate-300 hover:bg-slate-50"
+                        ? "border-orange-500 bg-orange-500/10"
+                        : "border-zinc-800 hover:border-zinc-600 hover:bg-zinc-800"
                     }`}
                   >
                     <span
                       className={`flex-shrink-0 h-6 w-6 rounded-full border-2 flex items-center justify-center text-xs font-semibold ${
                         selected
-                          ? "border-blue-600 bg-blue-600 text-white"
-                          : "border-slate-300 text-slate-500"
+                          ? "border-orange-500 bg-orange-500 text-zinc-950"
+                          : "border-zinc-700 text-zinc-400"
                       }`}
                     >
                       {String.fromCharCode(65 + i)}
                     </span>
-                    <span className="text-sm sm:text-base text-slate-800 pt-0.5">{opt}</span>
+                    <span className="text-sm sm:text-base text-zinc-100 pt-0.5">{opt}</span>
                   </button>
                 );
               })}
@@ -334,7 +338,7 @@ export default function ExamPage() {
           </div>
 
           {/* Bottom action bar */}
-          <div className="border-t border-slate-200 p-4 flex flex-wrap items-center justify-between gap-3">
+          <div className="border-t border-zinc-800 p-4 flex flex-wrap items-center justify-between gap-3">
             <div className="flex gap-2 flex-wrap">
               <button
                 type="button"
@@ -342,7 +346,7 @@ export default function ExamPage() {
                   toggleMark();
                   goTo(session.currentIndex + 1);
                 }}
-                className="px-3 sm:px-4 py-2 rounded-lg bg-purple-100 text-purple-700 font-medium text-sm hover:bg-purple-200 cursor-pointer"
+                className="px-3 sm:px-4 py-2 rounded-lg bg-purple-500/15 text-purple-300 font-medium text-sm hover:bg-purple-500/25 cursor-pointer"
               >
                 Mark for Review & Next
               </button>
@@ -350,7 +354,7 @@ export default function ExamPage() {
                 type="button"
                 onClick={clearResponse}
                 disabled={selectedOption == null}
-                className="px-3 sm:px-4 py-2 rounded-lg bg-slate-100 text-slate-700 font-medium text-sm hover:bg-slate-200 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+                className="px-3 sm:px-4 py-2 rounded-lg bg-zinc-800 text-zinc-200 font-medium text-sm hover:bg-zinc-700 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
               >
                 Clear Response
               </button>
@@ -360,7 +364,7 @@ export default function ExamPage() {
                 type="button"
                 onClick={() => goTo(session.currentIndex - 1)}
                 disabled={session.currentIndex === 0}
-                className="px-3 sm:px-4 py-2 rounded-lg border border-slate-300 text-slate-700 font-medium text-sm hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+                className="px-3 sm:px-4 py-2 rounded-lg border border-zinc-700 text-zinc-200 font-medium text-sm hover:bg-zinc-800 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
               >
                 Previous
               </button>
@@ -368,7 +372,7 @@ export default function ExamPage() {
                 type="button"
                 onClick={() => goTo(session.currentIndex + 1)}
                 disabled={session.currentIndex === examSet.questions.length - 1}
-                className="px-3 sm:px-4 py-2 rounded-lg bg-blue-700 text-white font-medium text-sm hover:bg-blue-800 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+                className="px-3 sm:px-4 py-2 rounded-lg bg-orange-500 text-zinc-950 font-medium text-sm hover:bg-orange-400 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
               >
                 Save & Next
               </button>
@@ -377,16 +381,16 @@ export default function ExamPage() {
         </section>
 
         {/* Sidebar: palette */}
-        <aside className="w-full lg:w-80 flex-shrink-0 bg-white rounded-xl border border-slate-200 shadow-sm p-4 sm:p-5 flex flex-col gap-4 h-fit">
+        <aside className="w-full lg:w-80 flex-shrink-0 bg-zinc-900 rounded-xl border border-zinc-800 shadow-sm p-4 sm:p-5 flex flex-col gap-4 h-fit">
           <div className="grid grid-cols-2 gap-2 text-xs">
             <LegendItem colorClass="bg-green-600" label={`Answered (${counts.answered + counts.answeredMarked})`} />
             <LegendItem colorClass="bg-red-500" label={`Not Answered (${counts.notAnswered})`} />
-            <LegendItem colorClass="bg-white border border-slate-300" label={`Not Visited (${counts.notVisited})`} />
+            <LegendItem colorClass="bg-zinc-900 border border-zinc-700" label={`Not Visited (${counts.notVisited})`} />
             <LegendItem colorClass="bg-purple-600" label={`Marked (${counts.marked + counts.answeredMarked})`} />
           </div>
 
           <div>
-            <p className="text-sm font-semibold text-slate-800 mb-2">Question Palette</p>
+            <p className="text-sm font-semibold text-zinc-100 mb-2">Question Palette</p>
             <QuestionPalette
               questions={examSet.questions}
               statuses={statuses}
@@ -412,7 +416,7 @@ function LegendItem({ colorClass, label }: { colorClass: string; label: string }
   return (
     <div className="flex items-center gap-1.5">
       <span className={`h-3 w-3 rounded ${colorClass}`} />
-      <span className="text-slate-600">{label}</span>
+      <span className="text-zinc-300">{label}</span>
     </div>
   );
 }

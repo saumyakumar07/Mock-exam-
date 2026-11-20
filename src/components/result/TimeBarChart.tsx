@@ -2,6 +2,7 @@
 
 import { Bar, BarChart, CartesianGrid, Cell, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { QuestionAnalysis } from "@/lib/examEngine";
+import { AXIS_TICK, TOOLTIP_PROPS } from "./chartTheme";
 
 interface Props {
   questions: QuestionAnalysis[];
@@ -21,10 +22,10 @@ export default function TimeBarChart({ questions, averageTimeMs }: Props) {
   return (
     <ResponsiveContainer width="100%" height={260}>
       <BarChart data={data} margin={{ top: 8, right: 8, left: -12, bottom: 0 }}>
-        <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-        <XAxis dataKey="name" tick={{ fontSize: 10 }} interval={Math.max(0, Math.floor(data.length / 15))} />
-        <YAxis tick={{ fontSize: 11 }} label={{ value: "seconds", angle: -90, position: "insideLeft", fontSize: 11 }} />
-        <Tooltip formatter={(value) => [`${value}s`, "Time spent"]} />
+        <CartesianGrid strokeDasharray="3 3" stroke="#27272a" />
+        <XAxis dataKey="name" tick={{ ...AXIS_TICK, fontSize: 10 }} interval={Math.max(0, Math.floor(data.length / 15))} />
+        <YAxis tick={AXIS_TICK} label={{ value: "seconds", angle: -90, position: "insideLeft", fontSize: 11, fill: "#a1a1aa" }} />
+        <Tooltip {...TOOLTIP_PROPS} formatter={(value) => [`${value}s`, "Time spent"]} />
         <Bar dataKey="seconds" radius={[3, 3, 0, 0]}>
           {data.map((d, i) => (
             <Cell

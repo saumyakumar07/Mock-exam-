@@ -10,7 +10,7 @@ interface Props {
 }
 
 const STATUS_STYLES: Record<QuestionStatus, string> = {
-  "not-visited": "bg-white border-slate-300 text-slate-700",
+  "not-visited": "bg-zinc-900 border-zinc-700 text-zinc-200",
   "not-answered": "bg-red-500 border-red-500 text-white",
   answered: "bg-green-600 border-green-600 text-white",
   marked: "bg-purple-600 border-purple-600 text-white",
@@ -30,7 +30,7 @@ export default function QuestionPalette({ questions, statuses, currentIndex, onJ
             onClick={() => onJump(i)}
             title={`Q${i + 1} · ${status.replace("-", " ")}`}
             className={`relative h-9 w-9 rounded-md border-2 text-xs font-semibold flex items-center justify-center cursor-pointer transition-transform hover:scale-105 ${STATUS_STYLES[status]} ${
-              isCurrent ? "ring-2 ring-offset-1 ring-blue-600" : ""
+              isCurrent ? "ring-2 ring-offset-1 ring-offset-zinc-900 ring-orange-500" : ""
             }`}
           >
             {i + 1}

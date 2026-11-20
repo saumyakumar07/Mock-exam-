@@ -1,21 +1,32 @@
 @import "tailwindcss";
 
+/* CERTIFENCE brand: near-black surfaces with the logo's orange as accent. */
 :root {
-  --background: #f4f6f9;
-  --foreground: #14213d;
+  --background: #09090b;
+  --foreground: #f4f4f5;
+  --brand: #f97316;
+  color-scheme: dark;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-brand: var(--brand);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
+  /* Faint orange glow at the top and a subtle grid, for a security-console feel. */
+  background-image:
+    radial-gradient(ellipse 80% 40% at 50% -10%, rgb(249 115 22 / 0.12), transparent 70%),
+    linear-gradient(rgb(255 255 255 / 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.025) 1px, transparent 1px);
+  background-size: 100% 900px, 32px 32px, 32px 32px;
+  background-repeat: no-repeat, repeat, repeat;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 
 @keyframes pulse-red {

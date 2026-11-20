@@ -13,30 +13,30 @@ export default function SubmitModal({ open, unansweredCount, markedCount, onCanc
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
-      <div className="bg-white rounded-xl shadow-xl max-w-md w-full p-6">
-        <h2 className="text-lg font-bold text-slate-900 mb-3">Submit Exam?</h2>
+      <div className="bg-zinc-900 border border-zinc-800 rounded-xl shadow-xl max-w-md w-full p-6">
+        <h2 className="text-lg font-bold text-zinc-50 mb-3">Submit Quiz?</h2>
 
         {unansweredCount > 0 ? (
-          <p className="text-sm text-slate-700 mb-2">
+          <p className="text-sm text-zinc-200 mb-2">
             You have{" "}
-            <span className="font-semibold text-red-600">
+            <span className="font-semibold text-red-400">
               {unansweredCount} unanswered question{unansweredCount > 1 ? "s" : ""}
             </span>
-            . Are you sure you want to submit the exam?
+            . Are you sure you want to submit the quiz?
           </p>
         ) : (
-          <p className="text-sm text-slate-700 mb-2">
-            You have answered all questions. Are you sure you want to submit the exam?
+          <p className="text-sm text-zinc-200 mb-2">
+            You have answered all questions. Are you sure you want to submit the quiz?
           </p>
         )}
 
         {markedCount > 0 && (
-          <p className="text-sm text-slate-500 mb-4">
+          <p className="text-sm text-zinc-400 mb-4">
             {markedCount} question{markedCount > 1 ? "s are" : " is"} marked for review.
           </p>
         )}
 
-        <p className="text-xs text-slate-500 mb-6">
+        <p className="text-xs text-zinc-400 mb-6">
           Once submitted, you will not be able to change your answers.
         </p>
 
@@ -44,16 +44,16 @@ export default function SubmitModal({ open, unansweredCount, markedCount, onCanc
           <button
             type="button"
             onClick={onCancel}
-            className="px-4 py-2 rounded-lg border border-slate-300 text-slate-700 font-medium hover:bg-slate-50 cursor-pointer"
+            className="px-4 py-2 rounded-lg border border-zinc-700 text-zinc-200 font-medium hover:bg-zinc-800 cursor-pointer"
           >
             Go Back
           </button>
           <button
             type="button"
             onClick={onConfirm}
-            className="px-4 py-2 rounded-lg bg-blue-700 hover:bg-blue-800 text-white font-medium cursor-pointer"
+            className="px-4 py-2 rounded-lg bg-orange-500 hover:bg-orange-400 text-zinc-950 font-medium cursor-pointer"
           >
-            Submit Exam
+            Submit Quiz
           </button>
         </div>
       </div>
